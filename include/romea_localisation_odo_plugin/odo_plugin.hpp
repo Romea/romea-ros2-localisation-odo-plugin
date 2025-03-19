@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef ROMEA_LOCALISATION_ODO_PLUGIN__ODO_LOCALISATION_PLUGIN_HPP_
-#define ROMEA_LOCALISATION_ODO_PLUGIN__ODO_LOCALISATION_PLUGIN_HPP_
+#ifndef ROMEA_LOCALISATION_ODO_PLUGIN__ODO_PLUGIN_HPP_
+#define ROMEA_LOCALISATION_ODO_PLUGIN__ODO_PLUGIN_HPP_
 
 // Eigen
 #include <Eigen/Core>
@@ -31,8 +31,10 @@ namespace romea
 {
 namespace ros2
 {
+namespace localisation
+{
 
-class OdoLocalisationPlugin
+class OdoPlugin
 {
 public:
   using OdometryMsg = nav_msgs::msg::Odometry;
@@ -41,10 +43,10 @@ public:
 
 public:
   ROMEA_LOCALISATION_ODO_PLUGIN_PUBLIC
-  explicit OdoLocalisationPlugin(const rclcpp::NodeOptions & options);
+  explicit OdoPlugin(const rclcpp::NodeOptions & options);
 
   ROMEA_LOCALISATION_ODO_PLUGIN_PUBLIC
-  virtual ~OdoLocalisationPlugin() = default;
+  virtual ~OdoPlugin() = default;
 
   ROMEA_LOCALISATION_ODO_PLUGIN_PUBLIC
   rclcpp::node_interfaces::NodeBaseInterface::SharedPtr
@@ -73,7 +75,8 @@ private:
   bool restamping_;
 };
 
+}  // namespace localisation
 }  // namespace ros2
 }  // namespace romea
 
-#endif  // ROMEA_LOCALISATION_ODO_PLUGIN__ODO_LOCALISATION_PLUGIN_HPP_
+#endif  // ROMEA_LOCALISATION_ODO_PLUGIN__ODO_PLUGIN_HPP_

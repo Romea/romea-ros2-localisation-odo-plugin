@@ -33,8 +33,8 @@ find_package(romea_mobile_base_utils REQUIRED)
 find_package(romea_localisation_msgs REQUIRED)
 
 add_library(${PROJECT_NAME} SHARED
-  src/odo_localisation_plugin.cpp
-  src/odo_localisation_plugin_parameters.cpp)
+  src/odo_plugin.cpp
+  src/odo_plugin_parameters.cpp)
 
 target_include_directories(${PROJECT_NAME} PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
@@ -57,7 +57,7 @@ ament_target_dependencies(${PROJECT_NAME}
   nav_msgs)
 
 rclcpp_components_register_node(${PROJECT_NAME}
-  PLUGIN "romea::ros2::OdoLocalisationPlugin"
+  PLUGIN "romea::ros2::localisation::OdoPlugin"
   EXECUTABLE odo_localisation_plugin_node
 )
 

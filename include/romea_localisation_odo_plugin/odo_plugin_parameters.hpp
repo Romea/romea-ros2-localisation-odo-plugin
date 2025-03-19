@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef ROMEA_LOCALISATION_ODO_PLUGIN__ODO_LOCALISATION_PLUGIN_PARAMETERS_HPP_
-#define ROMEA_LOCALISATION_ODO_PLUGIN__ODO_LOCALISATION_PLUGIN_PARAMETERS_HPP_
+#ifndef ROMEA_LOCALISATION_ODO_PLUGIN__ODO_PLUGIN_PARAMETERS_HPP_
+#define ROMEA_LOCALISATION_ODO_PLUGIN__ODO_PLUGIN_PARAMETERS_HPP_
 
 // std
 #include <string>
@@ -23,8 +23,9 @@
 
 namespace romea
 {
-
 namespace ros2
+{
+namespace localisation
 {
 
 void declare_restamping(rclcpp::Node::SharedPtr node);
@@ -36,7 +37,8 @@ bool get_restamping(rclcpp::Node::SharedPtr node);
 
 std::string get_controller_topic(rclcpp::Node::SharedPtr node);
 
+}  // namespace localisation
 }  // namespace ros2
 }  // namespace romea
 
-#endif  // ROMEA_LOCALISATION_ODO_PLUGIN__ODO_LOCALISATION_PLUGIN_PARAMETERS_HPP_
+#endif  // ROMEA_LOCALISATION_ODO_PLUGIN__ODO_PLUGIN_PARAMETERS_HPP_

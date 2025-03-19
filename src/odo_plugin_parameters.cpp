@@ -15,7 +15,7 @@
 #include <string>
 
 // romea
-#include "romea_localisation_odo_plugin/odo_localisation_plugin_parameters.hpp"
+#include "romea_localisation_odo_plugin/odo_plugin_parameters.hpp"
 #include "romea_common_utils/params/node_parameters.hpp"
 
 namespace
@@ -27,6 +27,8 @@ const char controller_topic_param_name[] = "controller_topic";
 namespace romea
 {
 namespace ros2
+{
+namespace localisation
 {
 
 //-----------------------------------------------------------------------------
@@ -54,5 +56,6 @@ std::string get_controller_topic(rclcpp::Node::SharedPtr node)
   return get_parameter<std::string>(node, controller_topic_param_name);
 }
 
+}  // namespace localisation
 }  // namespace ros2
 }  // namespace romea
