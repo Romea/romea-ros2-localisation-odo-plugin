@@ -1,44 +1,35 @@
 repositories:
     romea_core/romea_common:
         type: git
-        url: git@gitlab-ssh.irstea.fr:romea_core/romea_common.git
-        version: devel
+        url: git@forge.inrae.fr:romea_core/romea_common.git
     romea_core/romea_mobile_base:
         type: git
-        url: git@gitlab-ssh.irstea.fr:romea_core/romea_mobile_base.git
-        version: devel
+        url: git@forge.inrae.fr:romea_core/romea_mobile_base.git
 
     romea_core/romea_filtering:
         type: git
-        url: git@gitlab-ssh.irstea.fr:romea_core/romea_filtering.git
-        version: devel
+        url: git@forge.inrae.fr:romea_core/romea_filtering.git
     romea_core/romea_localisation:
         type: git
-        url: git@gitlab-ssh.irstea.fr:romea_core/romea_localisation.git
-        version: devel
+        url: git@forge.inrae.fr:romea_core/romea_localisation.git
 
     romea_ros2/tools/romea_common:
         type: git
-        url: git@gitlab-ssh.irstea.fr:romea_ros2/tools/romea_common.git
-        version: devel
+        url: git@forge.inrae.fr:romea_ros2/tools/romea_common.git
     romea_ros2/interfaces/sensors/romea_gps:
         type: git
-        url: git@gitlab-ssh.irstea.fr:romea_ros2/interfaces/vehicles/romea_mobile_base.git
+        url: git@forge.inrae.fr:romea_ros2/interfaces/vehicles/romea_mobile_base.git
 
     romea_ros2/algorithms/localisation/romea_localisation_msgs:
         type: git
-        url: git@gitlab-ssh.irstea.fr:romea_ros2/algorithms/localisation/romea_localisation_msgs.git
-        version: devel
+        url: git@forge.inrae.fr:romea_ros2/algorithms/localisation/romea_localisation_msgs.git
     romea_ros2/algorithms/localisation/romea_localisation_utils:
         type: git
-        url: git@gitlab-ssh.irstea.fr:romea_ros2/algorithms/localisation/romea_localisation_utils.git
-        version: devel
+        url: git@forge.inrae.fr:romea_ros2/algorithms/localisation/romea_localisation_utils.git
     romea_ros2/algorithms/localisation/romea_localisation_odo:
         type: git
-        url: git@gitlab-ssh.irstea.fr:romea_ros2/algorithms/localisation/romea_localisation_odo_plugin.git
-        version: devel
+        url: git@forge.inrae.fr:romea_ros2/algorithms/localisation/romea_localisation_odo_plugin.git
 
     romea_ros2/tools/romea_cmd_mux:
         type: git
-        url: git@gitlab-ssh.irstea.fr:romea_ros2/tools/romea_cmd_mux.git
-        version: devel
+        url: git@forge.inrae.fr:romea_ros2/tools/romea_cmd_mux.git

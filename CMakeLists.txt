@@ -72,7 +72,7 @@ install(
   DIRECTORY launch
   DESTINATION share/${PROJECT_NAME}
 )
-  
+
 #add_executable(${PROJECT_NAME}_node src/odo_localisation_plugin_node.cpp)
 #target_link_libraries(${PROJECT_NAME}_node ${PROJECT_NAME})
 #ament_target_dependencies(${PROJECT_NAME} rclcpp)
@@ -120,7 +120,9 @@ install(
 if(BUILD_TESTING)
 
   find_package(ament_lint_auto REQUIRED)
+  set(ament_cmake_flake8_CONFIG_FILE "${CMAKE_SOURCE_DIR}/.flake8")
   list(APPEND AMENT_LINT_AUTO_EXCLUDE ament_cmake_copyright)
+  list(APPEND AMENT_LINT_AUTO_EXCLUDE ament_cmake_uncrustify)
   ament_lint_auto_find_test_dependencies()
   #  add_subdirectory(test)
 
