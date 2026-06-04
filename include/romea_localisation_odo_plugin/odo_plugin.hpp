@@ -19,13 +19,13 @@
 #include <Eigen/Core>
 
 // ros
-#include <rclcpp/rclcpp.hpp>
 #include <nav_msgs/msg/odometry.hpp>
+#include <rclcpp/rclcpp.hpp>
 
 // romea
+#include "romea_localisation_msgs/msg/observation_twist2_d_stamped.hpp"
 #include "romea_localisation_odo_plugin/visibility_control.h"
 #include "romea_mobile_base_msgs/msg/kinematic_measure_stamped.hpp"
-#include "romea_localisation_msgs/msg/observation_twist2_d_stamped.hpp"
 
 namespace romea
 {
@@ -49,8 +49,7 @@ public:
   virtual ~OdoPlugin() = default;
 
   ROMEA_LOCALISATION_ODO_PLUGIN_PUBLIC
-  rclcpp::node_interfaces::NodeBaseInterface::SharedPtr
-  get_node_base_interface() const;
+  rclcpp::node_interfaces::NodeBaseInterface::SharedPtr get_node_base_interface() const;
 
 private:
   void declare_parameters_();

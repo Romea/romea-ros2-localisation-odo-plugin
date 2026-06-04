@@ -18,13 +18,12 @@
 #include <utility>
 
 // romea
-#include "romea_localisation_odo_plugin/odo_plugin_parameters.hpp"
-#include "romea_localisation_odo_plugin/odo_plugin.hpp"
 #include "romea_common_utils/qos.hpp"
+#include "romea_localisation_odo_plugin/odo_plugin.hpp"
+#include "romea_localisation_odo_plugin/odo_plugin_parameters.hpp"
 
 // ros
 #include "rclcpp/logging.hpp"
-
 
 namespace romea
 {
@@ -49,8 +48,7 @@ OdoPlugin::OdoPlugin(const rclcpp::NodeOptions & options)
 }
 
 //-----------------------------------------------------------------------------
-rclcpp::node_interfaces::NodeBaseInterface::SharedPtr
-OdoPlugin::get_node_base_interface() const
+rclcpp::node_interfaces::NodeBaseInterface::SharedPtr OdoPlugin::get_node_base_interface() const
 {
   return node_->get_node_base_interface();
 }
@@ -72,27 +70,23 @@ void OdoPlugin::init_subscriber_()
   } else if (controller_topic == "kinematic") {
     init_kinematic_subscriber_();
   } else {
-    throw  std::runtime_error("Unknown controller topic called : " + controller_topic);
+    throw std::runtime_error("Unknown controller topic called : " + controller_topic);
   }
 }
 
 //-----------------------------------------------------------------------------
 void OdoPlugin::init_odom_subscriber_()
 {
-  auto callback = std::bind(
-    &OdoPlugin::process_odom_,
-    this, std::placeholders::_1);
+  auto callback = std::bind(&OdoPlugin::process_odom_, this, std::placeholders::_1);
 
-  odom_sub_ = node_->create_subscription<OdometryMsg>(
-    "vehicle_controller/odom", best_effort(1), callback);
+  odom_sub_ =
+    node_->create_subscription<OdometryMsg>("vehicle_controller/odom", best_effort(1), callback);
 }
 
 //-----------------------------------------------------------------------------
 void OdoPlugin::init_kinematic_subscriber_()
 {
-  auto callback = std::bind(
-    &OdoPlugin::process_kinematic_,
-    this, std::placeholders::_1);
+  auto callback = std::bind(&OdoPlugin::process_kinematic_, this, std::placeholders::_1);
 
   kinematic_sub_ = node_->create_subscription<KinematicMeasureStampedMsg>(
     "vehicle_controller/kinematic", best_effort(1), callback);
@@ -112,8 +106,9 @@ void OdoPlugin::process_odom_(OdometryMsg::ConstSharedPtr msg)
   auto twist_msg = std::make_unique<romea_localisation_msgs::msg::ObservationTwist2DStamped>();
 
   twist_msg->header.frame_id = msg->header.frame_id;
-  twist_msg->header.stamp = restamping_ ? node_->get_clock()->now() :
-    rclcpp::Time(msg->header.stamp.sec, msg->header.stamp.nanosec);
+  twist_msg->header.stamp = restamping_
+                              ? node_->get_clock()->now()
+                              : rclcpp::Time(msg->header.stamp.sec, msg->header.stamp.nanosec);
 
   twist_msg->observation_twist.twist.linear_speeds.x = msg->twist.twist.linear.x;
   twist_msg->observation_twist.twist.linear_speeds.y = msg->twist.twist.linear.y;
@@ -149,8 +144,9 @@ void OdoPlugin::process_kinematic_(KinematicMeasureStampedMsg::ConstSharedPtr ms
   auto twist_msg = std::make_unique<romea_localisation_msgs::msg::ObservationTwist2DStamped>();
 
   twist_msg->header.frame_id = msg->header.frame_id;
-  twist_msg->header.stamp = restamping_ ? node_->get_clock()->now() :
-    rclcpp::Time(msg->header.stamp.sec, msg->header.stamp.nanosec);
+  twist_msg->header.stamp = restamping_
+                              ? node_->get_clock()->now()
+                              : rclcpp::Time(msg->header.stamp.sec, msg->header.stamp.nanosec);
   twist_msg->observation_twist.twist.linear_speeds.x = msg->measure.longitudinal_speed;
   twist_msg->observation_twist.twist.linear_speeds.y = msg->measure.lateral_speed;
   twist_msg->observation_twist.twist.angular_speed = msg->measure.angular_speed;

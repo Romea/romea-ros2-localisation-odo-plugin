@@ -32,7 +32,6 @@ void declare_restamping(rclcpp::Node::SharedPtr node);
 
 void declare_controller_topic(rclcpp::Node::SharedPtr node);
 
-
 bool get_restamping(rclcpp::Node::SharedPtr node);
 
 std::string get_controller_topic(rclcpp::Node::SharedPtr node);
