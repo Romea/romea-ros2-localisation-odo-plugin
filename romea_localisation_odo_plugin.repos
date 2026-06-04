@@ -6,6 +6,10 @@ repositories:
         type: git
         url: git@forge.inrae.fr:romea_core/romea_mobile_base.git
 
+    romea_ros2/interfaces/teleoperation/romea_joystick:
+        type: git
+        url: git@forge.inrae.fr:romea_ros2/interfaces/teleoperation/romea_joy.git
+
     romea_core/romea_filtering:
         type: git
         url: git@forge.inrae.fr:romea_core/romea_filtering.git
