@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 project(romea_localisation_odo_plugin)
 
 # Default to C99
@@ -43,18 +43,18 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 target_compile_definitions(${PROJECT_NAME}
   PRIVATE "ROMEA_LOCALISATION_ODO_BUILDING_DLL")
 
-ament_target_dependencies(${PROJECT_NAME}
-  rclcpp
-  rclcpp_components
-  romea_core_common
-  romea_core_mobile_base
-  romea_common_utils
-  romea_mobile_base_msgs
-  romea_mobile_base_utils
-  romea_localisation_msgs
-  geometry_msgs
-  std_msgs
-  nav_msgs)
+target_link_libraries(${PROJECT_NAME} PUBLIC
+  rclcpp::rclcpp
+  rclcpp_components::component
+  romea_core_common::romea_core_common
+  romea_core_mobile_base::romea_core_mobile_base
+  romea_common_utils::romea_common_utils
+  ${romea_mobile_base_msgs_TARGETS}
+  romea_mobile_base_utils::romea_mobile_base_utils
+  ${romea_localisation_msgs_TARGETS}
+  ${geometry_msgs_TARGETS}
+  ${std_msgs_TARGETS}
+  ${nav_msgs_TARGETS})
 
 rclcpp_components_register_node(${PROJECT_NAME}
   PLUGIN "romea::ros2::localisation::OdoPlugin"
@@ -75,7 +75,6 @@ install(
 
 #add_executable(${PROJECT_NAME}_node src/odo_localisation_plugin_node.cpp)
 #target_link_libraries(${PROJECT_NAME}_node ${PROJECT_NAME})
-#ament_target_dependencies(${PROJECT_NAME} rclcpp)
 
 #install(TARGETS
 # ${PROJECT_NAME}_node
